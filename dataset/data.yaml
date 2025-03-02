@@ -1,0 +1,5 @@
+train: /home/zsv/Projects/itmo/dataset/train/images
+val: /home/zsv/Projects/itmo/dataset/val/images
+
+nc: 2  # Количество классов
+names: ['helmet', 'no_helmet']  # Названия классов
