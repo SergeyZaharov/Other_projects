@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import os
+import platform
 
 import camera_inference
 import predict
@@ -15,9 +17,15 @@ def analyze_video():
     predict.analyze_video()
 
 def open_analysis_folder():
-    folder_path = "/Users/katasama/Desktop/ITMO CHANGED/dataset/test_results/"
+    folder_path = "dataset/test_results/"
+    # Получаем абсолютный путь
+    folder_abs = os.path.abspath(folder_path)
+    
     try:
-        subprocess.call(["open", folder_path])  # Для macOS используем команду "open"
+        if platform.system() == "Windows":
+            subprocess.call(["explorer", folder_abs])
+        else:
+            subprocess.call(["open", folder_abs])
     except Exception as e:
         messagebox.showerror("Ошибка", f"Не удалось открыть папку: {e}")
 
